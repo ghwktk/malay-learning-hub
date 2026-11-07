@@ -1,0 +1,49 @@
+
+/* Main website design */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f7f4;
+    color: #263b35;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Main heading */
+
+h1 {
+    color: #087f5b;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* Section headings */
+
+h2 {
+    color: #087f5b;
+}
+
+/* Vocabulary cards */
+
+.card {
+    background-color: white;
+    padding: 18px;
+    margin: 15px 0;
+    border-radius: 12px;
+    border: 1px solid #d8e8df;
+}
+
+/* Malay words */
+
+.malay {
+    color: #087f5b;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Translation text */
+
+.translation {
+    color: #52665e;
+    font-size: 16px;
+}
