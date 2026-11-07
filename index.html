@@ -90,5 +90,190 @@
     <p>English: How are you?</p>
     <p>Chinese: 你好吗？</p>
 
+<!-- Malay Vocabulary Quiz -->
+
+<div class="card" id="quiz">
+
+    <h2>Malay Vocabulary Quiz</h2>
+
+    <p id="question">
+        Loading question...
+    </p>
+
+    <div id="answers"></div>
+
+    <p id="feedback"></p>
+
+    <p id="score">Score: 0</p>
+
+    <button id="nextButton" disabled>
+        Next Question
+    </button>
+
+</div>
+    
+// Malay Learning Hub Quiz
+
+const questions = [
+    {
+        question: "What does 'Terima kasih' mean?",
+        answers: [
+            "Good morning",
+            "Thank you",
+            "Good night",
+            "How are you?"
+        ],
+        correct: 1
+    },
+    {
+        question: "What does 'Mesyuarat' mean?",
+        answers: [
+            "Restaurant",
+            "Travel",
+            "Meeting",
+            "Money"
+        ],
+        correct: 2
+    },
+    {
+        question: "What does 'Berapa harganya?' mean?",
+        answers: [
+            "How much is it?",
+            "Where is the toilet?",
+            "Thank you",
+            "Good evening"
+        ],
+        correct: 0
+    },
+    {
+        question: "What does 'Kerjasama' mean?",
+        answers: [
+            "Food",
+            "Cooperation",
+            "Meeting",
+            "Holiday"
+        ],
+        correct: 1
+    },
+    {
+        question: "What does 'Selamat pagi' mean?",
+        answers: [
+            "Good night",
+            "Good evening",
+            "Good morning",
+            "Goodbye"
+        ],
+        correct: 2
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+// Display a question
+
+function showQuestion() {
+
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("question").textContent =
+        q.question;
+
+    const answerArea =
+        document.getElementById("answers");
+
+    answerArea.innerHTML = "";
+
+    document.getElementById("feedback").textContent = "";
+
+    document.getElementById("nextButton").disabled = true;
+
+    q.answers.forEach(function(answer, index) {
+
+        const button = document.createElement("button");
+
+        button.textContent =
+            String.fromCharCode(65 + index) + ". " + answer;
+
+        button.style.display = "block";
+        button.style.margin = "8px 0";
+
+        button.addEventListener("click", function() {
+            checkAnswer(index);
+        });
+
+        answerArea.appendChild(button);
+
+    });
+
+}
+
+// Check the selected answer
+
+function checkAnswer(selected) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const q = questions[currentQuestion];
+
+    if (selected === q.correct) {
+
+        score++;
+
+        document.getElementById("feedback").textContent =
+            "Correct! Well done!";
+
+    } else {
+
+        document.getElementById("feedback").textContent =
+            "Incorrect. Correct answer: " +
+            q.answers[q.correct];
+
+    }
+
+    document.getElementById("score").textContent =
+        "Score: " + score;
+
+    document.getElementById("nextButton").disabled = false;
+
+}
+
+// Move to the next question
+
+document.getElementById("nextButton")
+    .addEventListener("click", function() {
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+
+            showQuestion();
+
+        } else {
+
+            document.getElementById("question").textContent =
+                "Quiz completed!";
+
+            document.getElementById("answers").innerHTML = "";
+
+            document.getElementById("feedback").textContent =
+                "Your final score: " + score +
+                " out of " + questions.length;
+
+            document.getElementById("nextButton").disabled = true;
+
+        }
+
+    });
+
+// Start the quiz
+
+showQuestion();
+
 </body>
 </html>
