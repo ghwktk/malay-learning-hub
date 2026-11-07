@@ -47,3 +47,30 @@ h2 {
     color: #52665e;
     font-size: 16px;
 }
+
+/* Quiz button design */
+
+#quiz button {
+    background-color: #087f5b;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#quiz button:disabled {
+    background-color: #a0b5ac;
+    cursor: not-allowed;
+}
+
+#feedback {
+    font-weight: bold;
+    color: #087f5b;
+}
+
+#score {
+    font-weight: bold;
+    font-size: 18px;
+}
