@@ -269,7 +269,25 @@ document.getElementById("nextButton")
         }
 
     });
+    
+// Malay pronunciation feature
+document.querySelectorAll(".malay").forEach(function(word) {
+    const malayText = word.textContent.trim();
 
+    word.style.cursor = "pointer";
+    word.title = "Tap to hear Malay pronunciation";
+    word.textContent = malayText + " 🔊";
+
+    word.addEventListener("click", function() {
+        const speech = new SpeechSynthesisUtterance(malayText);
+        speech.lang = "ms-MY";
+        speech.rate = 0.85;
+
+        speechSynthesis.cancel();
+        speechSynthesis.speak(speech);
+    });
+});
+    
 // Start the quiz
 
 showQuestion();
